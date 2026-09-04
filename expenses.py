@@ -21,17 +21,30 @@ def view_expenses():
     Display all saved expenses.
     """
     print("\n--- Saved Expenses ---")
+
     with open("expenses.txt", "r") as file:
         expenses = file.readlines()
-        if not expenses:
-            print("No expenses found.")
-            return
-        for expense in expenses:
-            description, category, amount = expense.strip().split(", ")
-            print(f"Description: {description}, Category: {category}, Amount: ${amount}")  
+    if not expenses:
+        print("No expenses found.")
+        return
+    
+    for expense in expenses:
+        description, category, amount = expense.strip().split(", ")
+        print(f"Description: {description}, Category: {category}, Amount: ${amount}")  
 
+def view_total_spending():
+    """
+    Calculate and display the total amount spent.
+    """
+    print("\n--- Total Spending ---")
 
+    total = 0.0
 
+    with open("expenses.txt", "r") as file:
+        expenses = file.readlines()
 
+    for expense in expenses:
+        description, category, amount = expense.strip().split(", ")
+        total += float(amount)
 
-            
+    print(f"Total Spending: ${total:.2f}")
