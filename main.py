@@ -3,7 +3,7 @@ Personal Expense Tracker
 Week 2 Final Project
 """
 
-from expenses import add_expense, view_expenses , view_total_spending  
+from expenses import (add_expense, view_expenses, view_total_spending, view_spending_by_category)
 
 
 def display_menu():
@@ -44,7 +44,7 @@ def handle_choice(choice):
         view_total_spending()
 
     elif choice == "4":
-        print("View Spending by Category selected!")
+        view_spending_by_category()
 
     elif choice == "help":
         display_menu()

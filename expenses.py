@@ -48,3 +48,30 @@ def view_total_spending():
         total += float(amount)
 
     print(f"Total Spending: ${total:.2f}")
+
+def view_spending_by_category():
+    """
+    Calculate and display spending totals for each category.
+    """
+    print("\n--- Spending by Category ---")
+
+    category_totals = {}
+
+    with open("expenses.txt", "r") as file:
+        expenses = file.readlines()
+
+    if not expenses:
+        print("No expenses found.")
+        return
+    
+    for expense in expenses:
+        description, category, amount = expense.strip().split(", ")
+        amount = float(amount)
+
+        if category in category_totals:
+            category_totals[category] += amount
+        else:
+            category_totals[category] = amount
+
+    for category, total in category_totals.items():
+        print(f"Category: {category}, Total Spending: ${total:.2f}")
